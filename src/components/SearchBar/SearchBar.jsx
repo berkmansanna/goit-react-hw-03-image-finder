@@ -1,7 +1,8 @@
 import { Component } from 'react';
-import { toast } from 'react-toastify'
 import PropTypes from 'prop-types';
-import s from './SearchBar.module.css'
+import { toast } from 'react-toastify';
+
+import s from './SearchBar.module.css';
 
 export class SearchBar extends Component {
   state = {
@@ -15,12 +16,12 @@ export class SearchBar extends Component {
   };
 
   handelSubmit = e => {
-    const {query} = this.state
+    const { query } = this.state;
     e.preventDefault();
     if (query.trim() === '') {
-     return toast.error("Empty field. Write something!");
+      return toast.error('Empty field. Write something!');
     }
-    this.props.onSubmit(this.state);
+    this.props.onSubmit(query);
     this.formReset();
   };
 
@@ -44,8 +45,8 @@ export class SearchBar extends Component {
             value={this.state.query}
             className={s.searchFormInput}
             onChange={this.handelChange}
-              autoComplete="off"
-              autoFocus
+            autoComplete="off"
+            autoFocus
             placeholder="Search images and photos"
           />
         </form>
